@@ -1,0 +1,38 @@
+[
+	"RT @Windows_Japan: 【COOKレットキャンペーン】劇場版ムーミンイメージレシピをリツイートしてフィンランド旅行を当てよう！チャンスは毎週｜詳しくは http://t.co/j9FZFCE4Nl #cooklet http://t.co/ABl1Nx4avl"
+][
+	"RT @SwagBucks: What was Nicole's score in yesterday's game challenge?Who won the $25 CVS Gift Card on Tuesday? What was the top Poll ans ..."
+]{
+	"songName": "Rose Golden",
+	"Album": "Passion, Pain & Demon Slayin'",
+	"Artists": "Kid Cudi",
+	"previewLink": "https://p.scdn.co/mp3-preview/9b69141e250a39304811095446602b78324809b9?cid=null"
+}{
+	"songName": "The Sign",
+	"Album": "The Sign (US Album) [Remastered]",
+	"Artists": "Ace of Base",
+	"previewLink": "https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=null"
+}{
+	"Title": "The Shawshank Redemption",
+	"Year": "1994",
+	"ImdbRating": "9.3",
+	"Country": "USA",
+	"Language": "English",
+	"Plot": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+	"Actors": "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
+	"rottenTomatoesRating": "91%"
+}{
+	"Title": "Mr. Nobody",
+	"Year": "2009",
+	"ImdbRating": "7.9",
+	"Country": "Belgium, Germany, Canada, France",
+	"Language": "English, Mohawk",
+	"Plot": "A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.",
+	"Actors": "Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham",
+	"rottenTomatoesRating": "64%"
+}{
+	"songName": "I Want It That Way",
+	"Album": "The Hits--Chapter One",
+	"Artists": "Backstreet Boys",
+	"previewLink": "https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=null"
+}
