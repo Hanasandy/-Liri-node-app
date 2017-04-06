@@ -170,7 +170,7 @@ function playSong() {
         };
 		writeLog();
      }
-  }); //end of spotify.search
+  });
 }//end of playSong
 
 
@@ -182,7 +182,7 @@ function doIt() {
 		value = myArr[1] 
 		playSong();
 	})
-}//end of doit
+}//end of doIt
 
 
 //############### WRITE DATA TO LOG.TXT ###############//
