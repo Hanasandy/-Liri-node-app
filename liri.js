@@ -5,21 +5,24 @@
 // do-what-it-says
 
 
-//twitter api keys imported from secure file (keys.js)
+//Twitter api keys imported from secure file (keys.js)
 	var keys = require("./keys.js");
 
-//modules
+//Modules
 	var fs = require("fs"); //file system
 	var Twitter = require("twitter");
 	var spotify = require("spotify");
 	var rp = require("request-promise");
 
-// Take two arguments 
+//Take two arguments 
 	var action = process.argv[2];
 	var value = process.argv[3];
+
+//Argument for logdata to log.txt	
 	var logData = "";
 
-// switch-case statement to get function run
+
+//Switch-case statement to get function run
 switch(action){
     case "my-tweets":
         getTweets();
@@ -49,7 +52,7 @@ switch(action){
 //############### TWITTER ###############//
 	function getTweets() {
 
-	//pulling in keys for request
+	    //Pulling in keys for request
 	    var twitterKeys = new Twitter({
 	        consumer_key: keys.twitterKeys.consumer_key,
 		    consumer_secret: keys.twitterKeys.consumer_secret,
@@ -58,7 +61,7 @@ switch(action){
 	    });
     	
 	    var params = {
-	  	    screen_name: "monroe_park",
+	  	    screen_name: "monroe_park", // OMG I only have 2 tweets!
 	  	    //"potus",
 	  	    count: 20
 	  	};
@@ -75,7 +78,7 @@ switch(action){
 			    logData = [tweets[i].text.replace("@_", " ")];
 		        writeLog();
 	        }
-	     });
+	    });
 	}//end of getTweets
 
 
@@ -109,8 +112,8 @@ switch(action){
 
 	function getMovieData() {
 	  rp({
-		    url: "http://www.omdbapi.com/?t=" + value + "&y=&plot=short&r=json",
-		    json: true // Automatically parses the JSON string in the response
+		  url: "http://www.omdbapi.com/?t=" + value + "&y=&plot=short&r=json",
+		  json: true // Automatically parses the JSON string in the response
 		})
 		    .then(function (data) {
 		    	console.log("*********************" + "OMDB Result" + "********************");	
@@ -132,7 +135,7 @@ switch(action){
 	    	        Plot: data.Plot, 
 	    	        Actors: data.Actors, 
 	    	        rottenTomatoesRating: data.Ratings[1].Value
-		    	 };
+		    	};
 				writeLog();
 		    })
 		    .catch(function (err) {
@@ -154,26 +157,26 @@ switch(action){
 	}//end of getSong
 
 	function playSong() {
-	  spotify.search({
-	  	type: "track", 
-	  	query: value
-	  }, function(err, data) {
-	     if (!err) {
-	    	console.log("********************" + "Spotify Result" + "********************");	
-	    	console.log("Song Title: " + data.tracks.items[0].name);
-	        console.log("Album: " + data.tracks.items[0].album.name);
-	    	console.log("Artist(s): " + data.tracks.items[0].artists[0].name)
-	        console.log("Preview Link: " + data.tracks.items[0].preview_url);
-	        console.log("******************************************************");
-	        logData = {
-	        	songName: data.tracks.items[0].name,
-	            Album: data.tracks.items[0].album.name,
-	        	Artists: data.tracks.items[0].artists[0].name, 
-	        	previewLink: data.tracks.items[0].preview_url
-	        };
-			writeLog();
-	     }
-	  });
+		spotify.search({
+	    	type: "track", 
+		  	query: value
+		}, function(err, data) {
+			    if (!err) {
+			    	console.log("********************" + "Spotify Result" + "********************");	
+			    	console.log("Song Title: " + data.tracks.items[0].name);
+			        console.log("Album: " + data.tracks.items[0].album.name);
+			    	console.log("Artist(s): " + data.tracks.items[0].artists[0].name)
+			        console.log("Preview Link: " + data.tracks.items[0].preview_url);
+			        console.log("******************************************************");
+			        logData = {
+			        	songName: data.tracks.items[0].name,
+			            Album: data.tracks.items[0].album.name,
+			        	Artists: data.tracks.items[0].artists[0].name, 
+			        	previewLink: data.tracks.items[0].preview_url
+			        };
+					writeLog();
+			    }
+	        });
 	}//end of playSong
 
 
@@ -190,24 +193,24 @@ switch(action){
 
 //############### WRITE DATA TO LOG.TXT ###############//
 	function writeLog() {
-		 fs.appendFile("log.txt", JSON.stringify(logData, null, "\t"), (err) => {
-			if ( err ) {
-		        return console.log(err);
+		fs.appendFile("log.txt", '\r\n\r\n');
+        fs.appendFile("log.txt", JSON.stringify(logData), function(err) {
+		    if (err) {
+		      return console.log(err);
 		    }
 		    console.log("log.txt was updated!");
-	     })
-	     
+		});
+    }//end of writeLog
 
-	    // fs.appendFile("log.txt", '\r\n\r\n');
-
-	    // fs.appendFile("log.txt", JSON.stringify(data), function(err) {
-	    // if (err) {
-	    //   return console.log(err);
-	    // }
-
-	    // console.log("log.txt was updated!");
+    // function writeLog() {
+	// 	 fs.appendFile("log.txt", JSON.stringify(logData, null, "\t"), (err) => {
+	// 		if ( err ) {
+	// 	        return console.log(err);
+	// 	    }
+	// 	    console.log("log.txt was updated!");
+	//      })
 	  
-	}//end of writeLog
+	// }//end of writeLog
 
 
 
